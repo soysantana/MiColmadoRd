@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -11,32 +10,20 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 
-export function LoginForm({
+export function SignupForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const navigate = useNavigate()
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    navigate("/dashboard")
-  }
-
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="overflow-hidden p-0">
         <CardContent className="grid p-0 md:grid-cols-2">
-          <form className="p-6 md:p-8" onSubmit={handleSubmit}>
+          <form className="p-6 md:p-8">
             <FieldGroup>
               <div className="flex flex-col items-center gap-2 text-center">
-                <img
-                src="/logo.png"
-                alt="public/"
-                className="h-14 w-14"
-                />
-                <h1 className="text-2xl font-bold">Mi Colmado RD</h1>
-                <p className="text-balance text-muted-foreground">
-                  Inicia sesión en tu cuenta de Colamdo RD
+                <h1 className="text-2xl font-bold">Crea tu cuenta</h1>
+                <p className="text-sm text-balance text-muted-foreground">
+                  Introduce tu correo a continuación para crear tu cuenta.
                 </p>
               </div>
               <Field>
@@ -47,21 +34,30 @@ export function LoginForm({
                   placeholder="2022-0835@colrd.com"
                   required
                 />
+                <FieldDescription>
+                  Usaremos esto para ponernos en contacto contigo. No compartiremos tu
+                  correo electrónico con nadie más.
+                </FieldDescription>
               </Field>
               <Field>
-                <div className="flex items-center">
-                  <FieldLabel htmlFor="password">Contraseña</FieldLabel>
-                  <a
-                    href="#"
-                    className="ml-auto text-sm underline-offset-2 hover:underline"
-                  >
-                    ¿Olvidaste tu contraseña?
-                  </a>
-                </div>
-                <Input id="password" type="password" required />
+                <Field className="grid grid-cols-2 gap-4">
+                  <Field>
+                    <FieldLabel htmlFor="password">Contraseña</FieldLabel>
+                    <Input id="password" type="password" required />
+                  </Field>
+                  <Field>
+                    <FieldLabel htmlFor="confirm-password">
+                      Confirmar Contraseña
+                    </FieldLabel>
+                    <Input id="confirm-password" type="password" required />
+                  </Field>
+                </Field>
+                <FieldDescription>
+                  Debe tener al menos 8 caracteres.
+                </FieldDescription>
               </Field>
               <Field>
-                <Button type="submit">Iniciar sesión</Button>
+                <Button type="submit">Crear una cuenta</Button>
               </Field>
               <FieldSeparator className="*:data-[slot=field-separator-content]:bg-card">
                 O continuar con
@@ -74,7 +70,7 @@ export function LoginForm({
                       fill="currentColor"
                     />
                   </svg>
-                  <span className="sr-only">Iniciar sesión con Apple</span>
+                  <span className="sr-only">Regístrate con Apple.</span>
                 </Button>
                 <Button variant="outline" type="button">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -83,7 +79,7 @@ export function LoginForm({
                       fill="currentColor"
                     />
                   </svg>
-                  <span className="sr-only">Iniciar sesión con Google</span>
+                  <span className="sr-only">Regístrate con Google</span>
                 </Button>
                 <Button variant="outline" type="button">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -92,19 +88,19 @@ export function LoginForm({
                       fill="currentColor"
                     />
                   </svg>
-                  <span className="sr-only">Iniciar sesión con Meta</span>
+                  <span className="sr-only">Regístrate con Meta</span>
                 </Button>
               </Field>
               <FieldDescription className="text-center">
-                ¿No tienes una cuenta? <a href="/register">Regístrate</a>
+                ¿Ya tienes una cuenta? <a href="/login">Iniciar sesión</a>
               </FieldDescription>
             </FieldGroup>
           </form>
           <div className="relative hidden bg-muted md:block">
             <img
-              src="/placeholder.jpg"
-              alt="public/"
-              className="absolute inset-0 h-full w-full object-cover"
+              src="/placeholder.svg"
+              alt="Image"
+              className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
             />
           </div>
         </CardContent>
