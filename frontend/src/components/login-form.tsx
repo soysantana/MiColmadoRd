@@ -17,9 +17,9 @@ export function LoginForm({
 }: React.ComponentProps<"div">) {
 	const navigate = useNavigate()
 
-	function handleSubmit(e: React.FormEvent) {
+	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault()
-		navigate("/dashboard")
+		navigate("/sale")
 	}
 
   return (

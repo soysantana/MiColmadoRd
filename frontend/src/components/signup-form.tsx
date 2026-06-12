@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils"
+import { useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -13,14 +14,25 @@ import { Input } from "@/components/ui/input"
 export function SignupForm({
   className,
   ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<"div">) {	
+  const navigate = useNavigate()
+
+	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+		e.preventDefault()
+		navigate("/login")
+	}
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="overflow-hidden p-0">
         <CardContent className="grid p-0 md:grid-cols-2">
-          <form className="p-6 md:p-8">
+          <form onSubmit={handleSubmit} className="p-6 md:p-8">
             <FieldGroup>
               <div className="flex flex-col items-center gap-2 text-center">
+                <img
+                src="/logo.png"
+                alt="public/"
+                className="h-14 w-14"
+                />
                 <h1 className="text-2xl font-bold">Crea tu cuenta</h1>
                 <p className="text-sm text-balance text-muted-foreground">
                   Introduce tu correo a continuación para crear tu cuenta.
@@ -98,9 +110,9 @@ export function SignupForm({
           </form>
           <div className="relative hidden bg-muted md:block">
             <img
-              src="/placeholder.svg"
-              alt="Image"
-              className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+              src="/register.jpg"
+              alt="public/"
+              className="absolute inset-0 h-full w-full"
             />
           </div>
         </CardContent>
