@@ -29,11 +29,11 @@ Construido con **React**, **TypeScript**, **Vite**, **shadcn/ui** y **Tailwind C
 
 ```bash
 cd frontend
-npm run dev      # Iniciar servidor de desarrollo
-npm run build    # Compilar para producción
-npm run lint     # Ejecutar linter
-npm run format   # Formatear código con Prettier
-npm run typecheck # Verificar tipos
+pnpm run dev      # Iniciar servidor de desarrollo
+pnpm run build    # Compilar para producción
+pnpm run lint     # Ejecutar linter
+pnpm run format   # Formatear código con Prettier
+pnpm run typecheck # Verificar tipos
 ```
 
 ### Tecnologías
